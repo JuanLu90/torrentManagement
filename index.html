@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Torrent</title>
+
+    <!-- JavaScript -->
+    <script src="js/classes/Torrent.js"></script>
+    <script src="js/classes/TorrentClient.js"></script>
+    <!-- <script src="js/storage/StorageManager.js"></script> -->
+    <script src="js/torrentManagement.js"></script>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- CSS StyleSheet -->
+    <link rel="stylesheet" href="./css/main.css">
+
+    <script>
+    
+    var client = new TorrentClient();
+    
+    </script>
+</head>
+<body>
+
+    <main>
+        <div class="container border border-dark mt-4">
+            <div class="row">
+                <div class="col text-center bg-warning">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/UTorrent_%28logo%29.png">
+                    <h1>ADD YOUR TORRENT</h1>
+                </div>
+            </div>
+            <div class="row bg-dark text-light p-2">
+                <div class="col-3"> <p>Title:</p> <input type="text" class="col-xl" id="title" placeholder="Title..."> </div>
+                <div class="col-2 mr-4"> <p>DL Percent (%):</p> <input type="text" class="col-xs-2" id="completed" placeholder="Download Percent..."> </div>
+                <div class="col-2 mr-4"> <p>Size (bytes):</p>  <input type="text" id="size" placeholder="Size..."> </div>
+                <div class="col-3"> <p>File Extension:</p> 
+                    <form id="myForm">
+                        <div class="form-check form-check-inline h6">
+                            <input class="form-check-input" type="radio" name="FileOptions" id="inlineRadio1" value=1>
+                            <span> JPG </span> 
+                        </div>
+                        <div class="form-check form-check-inline h6">
+                            <input class="form-check-input" type="radio" name="FileOptions" id="inlineRadio2" value=2 checked>
+                            <span> AVI </span> 
+                        </div>
+                        <div class="form-check form-check-inline h6">
+                            <input class="form-check-input" type="radio" name="FileOptions" id="inlineRadio3" value=3>
+                            <span> MP4 </span> 
+                        </div>
+                    </form>
+                </div>
+                <div class="col-1 align-middle" style="margin-left: -35px">
+                        <input type="button" class="btn btn-light mt-3" value="Add Torrent" onclick="addTorrent();" />
+                </div>
+            </div>
+        </div>
+
+        <div class="container border border-dark mt-4 bg-light">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col text-center bg-success">
+                            <h2>TORRENT LIST</h2>
+                        </div>
+                    </div>
+                    <div class="row border-bottom mt-2">
+                        <div class="col-2"> <p class="h6">ID: <img src="https://image.flaticon.com/icons/svg/159/159800.svg" width="15" class="ml-3 mb-1" style="cursor:pointer" onclick="orderById();"></p>  </div>
+                        <div class="col-3"> <p class="h6">Title: <img src="https://image.flaticon.com/icons/svg/159/159800.svg" width="15" class="ml-3 mb-1" style="cursor:pointer" onclick="orderByName();"></p> </div>
+                        <div class="col-2"> <p class="h6">DL (%): <img src="https://image.flaticon.com/icons/svg/159/159800.svg" width="15" class="ml-3 mb-1" style="cursor:pointer" onclick="orderByPercentage();"></p></div>
+                        <div class="col-2"> <p class="h6">Size: <img src="https://image.flaticon.com/icons/svg/159/159800.svg" width="15" class="ml-3 mb-1" style="cursor:pointer" onclick="orderBySize();"></p>  </div>
+                        <div class="col-2"> <p class="h6">File Extension:</p>  </div>
+                        <div class="col-1"> </div>
+                    </div>
+                    <div class="row add-torrent mt-2">
+                        <div class="col-2" id="id-show"> </div>
+                        <div class="col-3" id="title-show"></div>
+                        <div class="col-2" id="complete"></div>
+                        <div class="col-2" id="size-show"></div> 
+                        <div class="col-2" id="fileType"></div>
+                        <div class="col-1" id="delete"></div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="container border border-dark mt-4 bg-light">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col text-center bg-primary">
+                            <h2>JSON LIST</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="json-show"></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col text-center bg-secondary">
+                            <h2>STRING LIST</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col border">
+                            <div id="string-show"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+
+<!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</body>
+</html>

@@ -1,0 +1,12 @@
+table{
+    background-color: rgb(58, 146, 85);
+}
+table span{
+    color: rgb(222, 232, 233);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+.form-check span{
+    font-size: 0.7em;
+}
